@@ -1,6 +1,10 @@
-/* :root {
- 
-} */
+:root {
+  --light-blue: #3879bd;
+
+  --light-gray: #333333;
+
+  --text-dark-2: #41414d;
+}
 
 * {
   box-sizing: border-box;
