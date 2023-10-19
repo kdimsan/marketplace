@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import SelectOption from "./selectOption";
+import useProducts from "@/hooks/useProducts";
 
 const FilterByColorContainer = styled.div`
   h3 {
@@ -26,22 +27,18 @@ const FilterByColorContainer = styled.div`
 `;
 
 export default function FilterByColors() {
+  const { products } = useProducts();
+  const allColors = products.map((product) => product.color);
+  const uniqueColors = Array.from(new Set(allColors));
   return (
     <FilterByColorContainer>
       <h3>Colors</h3>
       <ul>
-        <li>
-          <SelectOption screenView="Amarelo" value={"amarelo"} />
-        </li>
-        <li>
-          <SelectOption screenView="Azul" value={"azul"} />
-        </li>
-        <li>
-          <SelectOption screenView="Vermelho" value={"vermelho"} />
-        </li>
-        <li>
-          <SelectOption screenView="Verde" value={"verde"} />
-        </li>
+        {uniqueColors.map((color, index) => (
+          <li key={index}>
+            <SelectOption screenView={color} value={color} />
+          </li>
+        ))}
       </ul>
     </FilterByColorContainer>
   );
