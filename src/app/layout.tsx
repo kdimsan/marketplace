@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import { CartContextProvider } from "../contexts/cartContext";
+import { FilterContextProvider } from "@/contexts/filterContext";
 
 const inter = Inter({
   weight: ["300", "400", "600"],
@@ -22,10 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CartContextProvider>
-          <Header />
-          {children}
-        </CartContextProvider>
+        <FilterContextProvider>
+          <CartContextProvider>{children}</CartContextProvider>
+        </FilterContextProvider>
       </body>
     </html>
   );

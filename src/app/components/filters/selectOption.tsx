@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SelectContainer } from "./styles/selectOptionStyles";
+import useFilters from "@/hooks/useFilters";
 
 interface SelectOptionProps {
   value: string;
@@ -9,12 +10,19 @@ interface SelectOptionProps {
 export default function SelectOption({ value, screenView }: SelectOptionProps) {
   const [checkStatus, setCheckStatus] = useState(false);
 
-  const handleCheckStatus = () => {
-    setCheckStatus(!checkStatus);
-  };
+  const { colors, setColors } = useFilters();
 
   const capitalizeFirstLetter = (color: string) => {
     return color.charAt(0).toUpperCase() + color.slice(1);
+  };
+
+  const handleSelectedFilter = (value: string) => {
+    if (colors.includes(value)) {
+      setColors(colors.filter((color) => color !== value));
+    } else {
+      setColors([...colors, value]);
+    }
+    setCheckStatus(!checkStatus);
   };
 
   return (
@@ -23,7 +31,7 @@ export default function SelectOption({ value, screenView }: SelectOptionProps) {
         <input
           type="checkbox"
           id={value}
-          onChange={handleCheckStatus}
+          onChange={() => handleSelectedFilter(value)}
           checked={checkStatus}
         />
         <div className="checkmark"></div>

@@ -1,5 +1,7 @@
+import useProducts from "@/hooks/useProducts";
 import React from "react";
 import styled from "styled-components";
+import SelectSizeButton from "./selectSizeButton";
 
 const FilterBySizeContainer = styled.div`
   margin: 15px 0;
@@ -27,15 +29,22 @@ const FilterBySizeContainer = styled.div`
 `;
 
 export default function FilterBySizes() {
+  const { products } = useProducts();
+
+  const sizes = products.flatMap((sizes) => sizes.size);
+  const uniqueSizes = Array.from(new Set(sizes));
+
+  const handleSelectedSize = () => {};
+
   return (
     <FilterBySizeContainer>
       <h3>Sizes</h3>
       <ul>
-        <li>PP</li>
-        <li>P</li>
-        <li>M</li>
-        <li>G</li>
-        <li>GG</li>
+        {uniqueSizes.sort().map((product) => (
+          <li>
+            <SelectSizeButton product={product} />
+          </li>
+        ))}
       </ul>
     </FilterBySizeContainer>
   );

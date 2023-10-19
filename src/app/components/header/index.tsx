@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import React from "react";
 import MarketplaceLogo from "./marketplaceLogo";
-import Cart from "./cart";
+import Cart from "./cart/index";
 
 const HeaderContainer = styled.header`
   height: 100px;
