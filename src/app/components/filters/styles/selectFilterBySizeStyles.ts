@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SelecSizeContainer = styled.div`
   span {
-    font-size: 14px;
+    font-size: 13px;
     font-family: inherit;
     font-weight: 400;
     color: var(--text-dark-2);
@@ -17,8 +17,8 @@ export const SelecSizeContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
 
     cursor: pointer;
   }

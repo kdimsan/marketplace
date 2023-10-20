@@ -1,41 +1,83 @@
-import useFilters from "@/hooks/useFilters";
-import useProducts from "@/hooks/useProducts";
+import { formatPrice } from "@/utils/priceFormatter";
 import React from "react";
 import styled from "styled-components";
 
+interface Data {
+  data: {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+  };
+}
+
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  max-height: 455px;
+
+  background: var(--card-background);
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  border-radius: 30px;
+
+  padding: 15px 15px 20px;
+
+  img {
+    border-radius: 20px 20px 0 0;
+  }
+  > div {
+    margin-top: 7px;
+    h3 {
+      font-family: inherit;
+      font-size: 17px;
+      color: var(--light-gray);
+    }
+
+    h4 {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-dark-2);
+
+      margin-top: 5px;
+    }
+
+    button {
+      width: 100%;
+      background-color: none;
+      border-radius: 5px;
+      border: 1.5px solid var(--light-gray);
+
+      padding: 5px 0;
+      margin: 5px 0;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark-2);
+
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--light-blue);
+      color: #eee;
+      border: none;
+    }
+  }
 `;
 
-export default function ProductsRender() {
-  const { products } = useProducts();
-  const { colors, size } = useFilters();
-
-  const filteredProducts =
-    colors.length > 0
-      ? products.filter((product) => colors.includes(product.color))
-      : products;
-
-  const allFilteredProducts = products.filter((product) => {
-    const colorMatch = colors.length === 0 || colors.includes(product.color);
-    const sizeMatch =
-      size.length === 0 || product.size.some((s) => size.includes(s));
-
-    return colorMatch && sizeMatch;
-  });
+export default function ProductsRender({ data }: Data) {
+  const price = formatPrice(data.price);
 
   return (
     <Container>
-      {allFilteredProducts.map((product) => (
-        <div key={product.id}>
-          <img src={product.image} alt={`Product ${product.name} image`} />
-          <h3>{product.name}</h3>
-          <h4>{product.price}</h4>
-          <button>Comprar</button>
-        </div>
-      ))}
+      <img src={data.image} alt={`Product ${data.name} image`} />
+      <div>
+        <h3>{data.name}</h3>
+        <h4>{price}</h4>
+        <button>Comprar</button>
+      </div>
     </Container>
   );
 }

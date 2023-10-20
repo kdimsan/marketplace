@@ -2,13 +2,12 @@ import useProducts from "@/hooks/useProducts";
 import React from "react";
 import styled from "styled-components";
 import SelectSizeButton from "./selectSizeButton";
+import FiltersTitle from "./filtersTitle";
 
 const FilterBySizeContainer = styled.div`
   margin: 15px 0;
 
   ul {
-    list-style: none;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, 30px);
     gap: 5px 7px;
@@ -31,7 +30,7 @@ export default function FilterBySizes() {
 
   return (
     <FilterBySizeContainer>
-      <h3>Sizes</h3>
+      <FiltersTitle title={"Sizes"} />
       <ul>
         {uniqueSizes.sort().map((product, index) => (
           <li key={index}>

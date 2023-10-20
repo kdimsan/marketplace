@@ -6,6 +6,8 @@ export const SelectContainer = styled.div`
     font-family: inherit;
     font-weight: 400;
     color: var(--text-dark-2);
+
+    margin-left: 3px;
   }
 
   .input-container input {
@@ -13,9 +15,11 @@ export const SelectContainer = styled.div`
   }
   .input-container {
     display: flex;
+    width: fit-content;
 
     position: relative;
     cursor: pointer;
+
     font-size: 15px;
     user-select: none;
     -webkit-tap-highlight-color: transparent;

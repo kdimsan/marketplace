@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SelectOption from "./selectOption";
+import FiltersTitle from "./filtersTitle";
 
 const FilterByPriceRangeComponent = styled.div`
   ul {
@@ -20,7 +21,7 @@ const FilterByPriceRangeComponent = styled.div`
 export default function FilterByPriceRange() {
   return (
     <FilterByPriceRangeComponent>
-      <h3>Price Range</h3>
+      <FiltersTitle title={"Price Range"} />
       <ul>
         <li>
           <SelectOption screenView="R$ 0 - R$ 50" value="0-50" />
