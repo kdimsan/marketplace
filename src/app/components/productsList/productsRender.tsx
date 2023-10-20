@@ -11,16 +11,24 @@ const Container = styled.div`
 
 export default function ProductsRender() {
   const { products } = useProducts();
-  const { colors } = useFilters();
+  const { colors, size } = useFilters();
 
   const filteredProducts =
     colors.length > 0
       ? products.filter((product) => colors.includes(product.color))
       : products;
 
+  const allFilteredProducts = products.filter((product) => {
+    const colorMatch = colors.length === 0 || colors.includes(product.color);
+    const sizeMatch =
+      size.length === 0 || product.size.some((s) => size.includes(s));
+
+    return colorMatch && sizeMatch;
+  });
+
   return (
     <Container>
-      {filteredProducts.map((product) => (
+      {allFilteredProducts.map((product) => (
         <div key={product.id}>
           <img src={product.image} alt={`Product ${product.name} image`} />
           <h3>{product.name}</h3>

@@ -11,17 +11,12 @@ const FilterBySizeContainer = styled.div`
 
     display: grid;
     grid-template-columns: repeat(auto-fill, 30px);
-    gap: 5px;
+    gap: 5px 7px;
     margin-top: 10px;
 
     li {
       display: flex;
       align-items: center;
-      justify-content: center;
-
-      padding: 2.5px;
-
-      border: 1px solid black;
 
       cursor: pointer;
     }
@@ -34,14 +29,12 @@ export default function FilterBySizes() {
   const sizes = products.flatMap((sizes) => sizes.size);
   const uniqueSizes = Array.from(new Set(sizes));
 
-  const handleSelectedSize = () => {};
-
   return (
     <FilterBySizeContainer>
       <h3>Sizes</h3>
       <ul>
-        {uniqueSizes.sort().map((product) => (
-          <li>
+        {uniqueSizes.sort().map((product, index) => (
+          <li key={index}>
             <SelectSizeButton product={product} />
           </li>
         ))}
