@@ -5,8 +5,16 @@ import Header from "./components/header";
 import ProductList from "./components/productsList";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import Carousel from "./components/carousel";
 
 const Content = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const MainSection = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
 `;
@@ -39,8 +47,11 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         <Content>
-          <Filters />
-          <ProductList />
+          <Carousel />
+          <MainSection>
+            <Filters />
+            <ProductList />
+          </MainSection>
         </Content>
       </main>
     </div>

@@ -17,7 +17,7 @@ const Container = styled.div`
   max-height: 455px;
 
   background: var(--card-background);
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #eeeeee;
   border-radius: 30px;
 
   padding: 15px 15px 20px;

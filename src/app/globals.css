@@ -5,7 +5,9 @@
 
   --text-dark-2: #41414d;
 
-  --card-background: #eeeeee;
+  --card-background: #ffffff;
+
+  --background-primary: #dddddd;
 }
 
 * {

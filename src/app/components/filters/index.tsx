@@ -9,7 +9,7 @@ const FiltersContainer = styled.div`
   height: fit-content;
 
   background: var(--card-background);
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #eeeeee;
   border-radius: 25px;
   padding: 15px 15px 20px;
 `;
