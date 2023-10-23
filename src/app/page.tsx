@@ -7,6 +7,9 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Carousel from "./components/carousel";
 
+import { register } from "swiper/element";
+register();
+
 const Content = styled.div`
   width: 100%;
 

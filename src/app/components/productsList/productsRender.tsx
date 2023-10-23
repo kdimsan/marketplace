@@ -1,6 +1,7 @@
 import { formatPrice } from "@/utils/priceFormatter";
 import React from "react";
 import styled from "styled-components";
+import BuyButton from "../buyButton";
 
 interface Data {
   data: {
@@ -41,29 +42,6 @@ const Container = styled.div`
 
       margin-top: 5px;
     }
-
-    button {
-      width: 100%;
-      background-color: none;
-      border-radius: 5px;
-      border: 1.5px solid var(--light-gray);
-
-      padding: 5px 0;
-      margin: 5px 0;
-
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark-2);
-
-      transition: all 0.3s;
-    }
-
-    button:hover {
-      background-color: var(--light-blue);
-      color: #eee;
-      border: none;
-    }
   }
 `;
 
@@ -76,7 +54,7 @@ export default function ProductsRender({ data }: Data) {
       <div>
         <h3>{data.name}</h3>
         <h4>{price}</h4>
-        <button>Comprar</button>
+        <BuyButton infoID={data.id} title={"Add to bag"} />
       </div>
     </Container>
   );
