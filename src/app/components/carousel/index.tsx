@@ -39,9 +39,11 @@ export default function Carousel() {
   return (
     <Container>
       <Swiper
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        slidesPerView={1}
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
         pagination={{ dynamicBullets: true, clickable: true }}
         modules={[Pagination, Autoplay]}
+        className="mySwiper"
       >
         {banner.map((item) => (
           <SwiperSlide key={item.id}>

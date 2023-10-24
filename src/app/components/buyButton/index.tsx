@@ -63,45 +63,53 @@ const ButtonsSizeConatiner = styled.div`
 
 export default function BuyButton({ title, infoID }: BuyBttonProps) {
   const { products } = useProducts();
-  const { cartItem, setCartItem } = useCart();
+  const { cartItems, addToCart } = useCart();
+
   const [clicked, setClicked] = useState(false);
-  const [selectedProductId, setSelectedProduct] = useState<string>("");
-  const [selectedProductSize, setSelectedProductSize] = useState("");
+  // const [selectedProductId, setSelectedProductId] = useState<string | null>(
+  //   null
+  // );
+  const [selectedProductSize, setSelectedProductSize] = useState<string>("");
 
   let timeout: NodeJS.Timeout;
 
   const handleClick = () => {
-    setClicked(true);
-    setSelectedProduct(infoID);
+    if (infoID) {
+      setClicked(true);
+    }
   };
 
   const handleMouseLeave = () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       setClicked(false);
-    }, 10000);
+    }, 3000);
   };
 
   const handleSelectedProductSize = (size: string) => {
     setSelectedProductSize(size);
+    handleAddToCart(infoID, size);
   };
 
   const renderSizes = () => {
-    if (selectedProductId !== undefined) {
-      const selectedProduct = products.find(
-        (product) => product.id === selectedProductId
-      );
-      if (selectedProduct && selectedProduct.size) {
-        return selectedProduct.size.map((size, index) => (
-          <div key={index}>
-            <button onClick={() => handleSelectedProductSize(size)}>
-              {size}
-            </button>
-          </div>
-        ));
-      }
+    const selectedProduct = products.find((product) => product.id === infoID);
+
+    if (selectedProduct && selectedProduct.size) {
+      return selectedProduct.size.map((size, index) => (
+        <div key={index}>
+          <button onClick={() => handleSelectedProductSize(size)}>
+            {size}
+          </button>
+        </div>
+      ));
     }
+    return null;
   };
+  const handleAddToCart = (id: string, size: string) => {
+    addToCart(id, size);
+  };
+
+  console.log(cartItems);
 
   return (
     <Container>

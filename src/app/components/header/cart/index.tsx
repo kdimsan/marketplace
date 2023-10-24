@@ -4,12 +4,12 @@ import { useCart } from "@/hooks/useCart";
 import { Container, CartCounter } from "./cartStyle";
 
 export default function Cart() {
-  const { cartItem } = useCart();
+  const { cartItems } = useCart();
   return (
     <Container>
       <CartIcon />
       <CartCounter>
-        <span>{cartItem}</span>
+        <span>{cartItems.length}</span>
       </CartCounter>
     </Container>
   );
