@@ -6,6 +6,8 @@ export const Container = styled.div`
 
   position: relative;
 
+  cursor: pointer;
+
   svg {
     width: 24px;
     height: 24px;

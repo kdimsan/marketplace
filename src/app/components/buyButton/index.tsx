@@ -109,8 +109,6 @@ export default function BuyButton({ title, infoID }: BuyBttonProps) {
     addToCart(id, size);
   };
 
-  console.log(cartItems);
-
   return (
     <Container>
       {!clicked && (
