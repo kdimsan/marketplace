@@ -1,5 +1,6 @@
 import { useCart } from "@/hooks/useCart";
 import useProducts from "@/hooks/useProducts";
+import { PricesArray, cartFinalPrice } from "@/utils/cartTotalPrice";
 import { formatPrice, totalPrice } from "@/utils/priceFormatter";
 import React from "react";
 import styled from "styled-components";
@@ -19,7 +20,7 @@ const CartProductContent = styled.div`
   border-radius: 10px;
   box-shadow: inset -13px -13px 23px #cbcbcb, inset 13px 13px 23px #ffffff;
 
-  padding: 5px;
+  padding: 5px 8px;
 
   > div {
     display: flex;
@@ -54,8 +55,8 @@ const CartProductContent = styled.div`
 
 const CartTotalPrice = styled.div`
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 4px;
+  right: 18px;
 
   > span {
     font-family: inherit;
@@ -99,17 +100,14 @@ export default function CartItem() {
     })
     .filter((item) => item !== null);
 
-  const finalPrices = combinedArray.map((product) => {
-    if (product && typeof product.finalPrice === "string") {
-      const priceWithoutSymbol = product.finalPrice.substring(1); // Remove o "$" do início da string
-      return parseFloat(priceWithoutSymbol);
+  const priceArray: PricesArray[] = combinedArray.map((price) => {
+    if (price?.finalPrice) {
+      return { finalPrice: price.finalPrice };
     }
-    return 0;
+    return { finalPrice: "Erro" };
   });
 
-  const totalFinalPrice = finalPrices.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
-  }, 0);
+  const cartTotalPrice = cartFinalPrice(priceArray);
 
   return (
     <Container>
@@ -130,7 +128,7 @@ export default function CartItem() {
         </div>
       ))}
       <CartTotalPrice>
-        <span>Cart price: {formatPrice(totalFinalPrice)}</span>
+        <span>Cart price: {formatPrice(cartTotalPrice)}</span>
       </CartTotalPrice>
     </Container>
   );

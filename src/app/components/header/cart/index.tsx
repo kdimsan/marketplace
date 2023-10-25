@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartIcon from "./cartIcon";
 import { useCart } from "@/hooks/useCart";
 import { Container, CartCounter } from "./cartStyle";
@@ -18,6 +18,29 @@ export default function Cart() {
   const totalProducts = cartItemsTotal.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
   }, 0);
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (dropdownStatus && target && !target.closest(".cart-dropdown")) {
+        setDropdownStatus(false);
+      }
+    };
+
+    const handleScroll = () => {
+      if (dropdownStatus) {
+        setDropdownStatus(false);
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+    document.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [dropdownStatus]);
 
   return (
     <Container onClick={handleDropdownStatus}>

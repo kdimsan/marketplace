@@ -66,10 +66,6 @@ export default function BuyButton({ title, infoID }: BuyBttonProps) {
   const { cartItems, addToCart } = useCart();
 
   const [clicked, setClicked] = useState(false);
-  // const [selectedProductId, setSelectedProductId] = useState<string | null>(
-  //   null
-  // );
-  const [selectedProductSize, setSelectedProductSize] = useState<string>("");
 
   let timeout: NodeJS.Timeout;
 
@@ -87,7 +83,6 @@ export default function BuyButton({ title, infoID }: BuyBttonProps) {
   };
 
   const handleSelectedProductSize = (size: string) => {
-    setSelectedProductSize(size);
     handleAddToCart(infoID, size);
   };
 
