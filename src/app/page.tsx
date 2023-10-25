@@ -1,11 +1,12 @@
 "use client";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Filters from "./components/filters";
 import Header from "./components/header";
 import ProductList from "./components/productsList";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import Carousel from "./components/carousel";
+import Footer from "./components/footer";
 
 import { register } from "swiper/element";
 register();
@@ -57,6 +58,7 @@ export default function Home() {
           </MainSection>
         </Content>
       </main>
+      <Footer />
     </div>
   );
 }
