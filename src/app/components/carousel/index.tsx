@@ -30,6 +30,11 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    > img {
+      max-width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
   }
 `;
 
@@ -40,19 +45,14 @@ export default function Carousel() {
     <Container>
       <Swiper
         slidesPerView={1}
-        autoplay={{ delay: 3500, disableOnInteraction: false }}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
         pagination={{ dynamicBullets: true, clickable: true }}
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         {banner.map((item) => (
           <SwiperSlide key={item.id}>
-            <Image
-              width={1000}
-              height={300}
-              src={item.image}
-              alt="Banner Image"
-            />
+            <img src={item.image} alt="Banner Image" />
           </SwiperSlide>
         ))}
       </Swiper>

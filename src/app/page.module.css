@@ -3,7 +3,11 @@
 
   margin: 100px 0;
 
-  padding: 0 100px;
+  padding: 0 20px;
 
   background-color: var(--background-primary);
+
+  @media (min-width: 1024px) {
+    padding: 0 100px;
+  }
 }

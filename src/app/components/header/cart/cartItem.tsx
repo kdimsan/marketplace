@@ -7,9 +7,17 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 233px);
 
   gap: 15px;
+
+  > div {
+    > h1 {
+      font-family: inherit;
+      font-size: 20px;
+      color: var(--background-primary);
+    }
+  }
 `;
 
 const CartProductContent = styled.div`
@@ -104,13 +112,18 @@ export default function CartItem() {
     if (price?.finalPrice) {
       return { finalPrice: price.finalPrice };
     }
-    return { finalPrice: "Erro" };
+    return { finalPrice: "Error" };
   });
 
   const cartTotalPrice = cartFinalPrice(priceArray);
 
   return (
     <Container>
+      {productInCart.length === 0 && (
+        <div>
+          <h1>Your bag is empty :(</h1>
+        </div>
+      )}
       {combinedArray.map((product, index) => (
         <div key={index}>
           {product && (

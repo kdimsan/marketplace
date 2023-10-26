@@ -12,6 +12,11 @@ export const Container = styled.div`
     width: 24px;
     height: 24px;
   }
+
+  .open {
+    top: 80px;
+    right: 15px;
+  }
 `;
 
 export const CartCounter = styled.div`

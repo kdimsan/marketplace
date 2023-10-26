@@ -48,7 +48,8 @@ export default function Cart() {
       <CartCounter>
         <span>{totalProducts}</span>
       </CartCounter>
-      {dropdownStatus && <CartDropdown />}
+
+      <CartDropdown value={dropdownStatus} />
     </Container>
   );
 }

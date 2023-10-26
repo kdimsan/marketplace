@@ -2,14 +2,21 @@ import React from "react";
 import ProductsRender from "./productsRender";
 import useProducts from "@/hooks/useProducts";
 import useFilters from "@/hooks/useFilters";
-import { ProductsResponse } from "@/types/productsResponse";
-import { ProductType } from "@/types/productsType";
+
 import styled from "styled-components";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 10px;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, 250px);
+    justify-content: start;
+    gap: 40px 15px;
+  }
 `;
 
 export default function ProductList() {

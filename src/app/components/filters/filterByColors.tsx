@@ -12,8 +12,16 @@ const FilterByColorContainer = styled.div`
 
     margin-top: 10px;
 
+    padding: 0 7px;
+
     li + li {
       margin-top: 5px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    ul {
+      padding: 0;
     }
   }
 `;

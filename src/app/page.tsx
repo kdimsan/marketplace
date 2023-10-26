@@ -20,7 +20,14 @@ const Content = styled.div`
 
 const MainSection = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+  }
+  @media (min-width: 1300px) {
+    grid-template-columns: 1fr 3fr;
+  }
 `;
 
 export default function Home() {

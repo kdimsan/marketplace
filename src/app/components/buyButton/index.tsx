@@ -33,13 +33,17 @@ const Container = styled.div`
     padding: 8px 0;
 
     font-family: inherit;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-dark-2);
 
     &:hover {
       color: #eee;
     }
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 14px;
   }
 `;
 
@@ -63,7 +67,7 @@ const ButtonsSizeConatiner = styled.div`
 
 export default function BuyButton({ title, infoID }: BuyBttonProps) {
   const { products } = useProducts();
-  const { cartItems, addToCart } = useCart();
+  const { addToCart } = useCart();
 
   const [clicked, setClicked] = useState(false);
 

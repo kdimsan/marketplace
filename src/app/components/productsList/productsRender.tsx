@@ -30,17 +30,29 @@ const Container = styled.div`
     margin-top: 7px;
     h3 {
       font-family: inherit;
-      font-size: 17px;
+      font-size: 15px;
       color: var(--light-gray);
     }
 
     h4 {
       font-family: inherit;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--text-dark-2);
 
-      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    > div {
+      h3 {
+        font-size: 17px;
+      }
+
+      h4 {
+        font-size: 15px;
+      }
     }
   }
 `;

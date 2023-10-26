@@ -8,11 +8,26 @@ import Link from "next/link";
 const Container = styled.div`
   ul {
     display: flex;
-    gap: 10px;
+    gap: 7px;
+
     li {
       cursor: pointer;
-      > svg {
-        color: var(--light-blue);
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    ul {
+      gap: 10px;
+      li {
+        svg {
+          width: 24px;
+          height: 24px;
+        }
       }
     }
   }
