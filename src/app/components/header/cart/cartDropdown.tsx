@@ -21,15 +21,15 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  box-shadow: -10px -10px 40px #ffffff, 20px 20px 40px var(--light-gray);
+  box-shadow: 16px 16px 40px var(--light-gray);
 
   transition: all 0.5s ease-out;
 
   &:before {
     position: absolute;
     content: "";
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 
     rotate: 45deg;
     border-radius: 3px;
@@ -37,6 +37,7 @@ const Container = styled.div`
     top: -5px;
     right: 4px;
 
+    z-index: -1;
     background-color: var(--light-blue-2);
   }
 `;

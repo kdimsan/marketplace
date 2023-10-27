@@ -24,7 +24,7 @@ const MobileFiltersContainer = styled.div`
   margin-bottom: 40px;
 
   @media (min-width: 450px) {
-    justify-content: end;
+    justify-content: center;
   }
 
   button {

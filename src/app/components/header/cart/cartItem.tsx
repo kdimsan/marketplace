@@ -4,60 +4,17 @@ import { PricesArray, cartFinalPrice } from "@/utils/cartTotalPrice";
 import { formatPrice, totalPrice } from "@/utils/priceFormatter";
 import React from "react";
 import styled from "styled-components";
+import CartItemsCard, { DataProps } from "./cartItemsCard";
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 233px);
-
-  gap: 15px;
-
   > div {
     > h1 {
       font-family: inherit;
       font-size: 20px;
       color: var(--background-primary);
+
+      padding: 20px 0;
     }
-  }
-`;
-
-const CartProductContent = styled.div`
-  display: flex;
-  gap: 10px;
-
-  background: linear-gradient(315deg, #e6e6e6, #ffffff);
-  border-radius: 10px;
-  box-shadow: inset -13px -13px 23px #cbcbcb, inset 13px 13px 23px #ffffff;
-
-  padding: 5px 8px;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  > img {
-    width: 75px;
-    border-radius: 8px;
-  }
-
-  h3,
-  h4,
-  span {
-    font-family: inherit;
-    color: var(--light-blue-2);
-  }
-
-  h3 {
-    font-size: 16px;
-    white-space: nowrap;
-    margin: -5px 0 5px;
-  }
-  h4 {
-    font-size: 13px;
-  }
-  span {
-    font-size: 12px;
-    margin-bottom: 5px;
   }
 `;
 
@@ -117,6 +74,9 @@ export default function CartItem() {
 
   const cartTotalPrice = cartFinalPrice(priceArray);
 
+  const dataProps = { data: combinedArray } as DataProps;
+  console.log(combinedArray);
+
   return (
     <Container>
       {productInCart.length === 0 && (
@@ -124,22 +84,8 @@ export default function CartItem() {
           <h1>Your bag is empty :(</h1>
         </div>
       )}
-      {combinedArray.map((product, index) => (
-        <div key={index}>
-          {product && (
-            <CartProductContent>
-              <img src={product.image} alt={"Cart item image"} />
-              <div>
-                <h3>{product.name}</h3>
-                <h4>Selected size: {product.size}</h4>
-                <span>Quantity: {product.quantity}</span>
-                <h4>Total Price:</h4>
-                <span>{product.finalPrice}</span>
-              </div>
-            </CartProductContent>
-          )}
-        </div>
-      ))}
+
+      <CartItemsCard data={dataProps.data} />
       <CartTotalPrice>
         <span>Cart price: {formatPrice(cartTotalPrice)}</span>
       </CartTotalPrice>
