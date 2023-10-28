@@ -15,12 +15,12 @@ export interface DataProps {
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 233px);
+  grid-template-columns: repeat(1, 250px);
 
   gap: 15px;
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(2, 233px);
+    grid-template-columns: repeat(2, 250px);
   }
 `;
 const CartProductContent = styled.div`

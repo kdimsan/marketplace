@@ -17,6 +17,13 @@ export const Container = styled.div`
     top: 80px;
     right: 15px;
   }
+
+  @media (min-width: 1024px) {
+    .open {
+      top: 82px;
+      right: 90px;
+    }
+  }
 `;
 
 export const CartCounter = styled.div`

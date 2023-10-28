@@ -32,10 +32,10 @@ const Container = styled.div`
     height: 25px;
 
     rotate: 45deg;
-    border-radius: 3px;
+    border-radius: 2px;
 
     top: -5px;
-    right: 4px;
+    right: 5px;
 
     z-index: -1;
     background-color: var(--light-blue-2);

@@ -75,7 +75,6 @@ export default function CartItem() {
   const cartTotalPrice = cartFinalPrice(priceArray);
 
   const dataProps = { data: combinedArray } as DataProps;
-  console.log(combinedArray);
 
   return (
     <Container>
