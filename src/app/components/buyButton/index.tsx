@@ -1,9 +1,9 @@
 import { useCart } from "@/hooks/useCart";
 import useProducts from "@/hooks/useProducts";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-interface BuyBttonProps {
+interface BuyButtonProps {
   title: string;
   infoID: string;
 }
@@ -47,43 +47,30 @@ const Container = styled.div`
   }
 `;
 
-const ButtonsSizeConatiner = styled.div`
+const SizesContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 
-  button {
-    border-radius: 5px;
-
-    padding: 6px;
-    margin: 2px 0;
-    transition: all 0.3s;
+  > span {
+    transition: all 0.3s ease;
     &:hover {
-      border: 1px solid var(--background-primary);
+      filter: drop-shadow(0px 0px 4px var(--background-secondary));
     }
   }
 `;
 
-export default function BuyButton({ title, infoID }: BuyBttonProps) {
+export default function BuyButton({ title, infoID }: BuyButtonProps) {
   const { products } = useProducts();
   const { addToCart } = useCart();
 
   const [clicked, setClicked] = useState(false);
 
-  let timeout: NodeJS.Timeout;
-
-  const handleClick = () => {
+  const handleFocus = () => {
     if (infoID) {
-      setClicked(true);
+      setClicked(!clicked);
     }
-  };
-
-  const handleMouseLeave = () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      setClicked(false);
-    }, 3000);
   };
 
   const handleSelectedProductSize = (size: string) => {
@@ -95,11 +82,9 @@ export default function BuyButton({ title, infoID }: BuyBttonProps) {
 
     if (selectedProduct && selectedProduct.size) {
       return selectedProduct.size.map((size, index) => (
-        <div key={index}>
-          <button onClick={() => handleSelectedProductSize(size)}>
-            {size}
-          </button>
-        </div>
+        <span key={index} onClick={() => handleSelectedProductSize(size)}>
+          {size}
+        </span>
       ));
     }
     return null;
@@ -110,16 +95,12 @@ export default function BuyButton({ title, infoID }: BuyBttonProps) {
 
   return (
     <Container>
-      {!clicked && (
-        <button tabIndex={0} onClick={handleClick}>
-          {title}
-        </button>
-      )}
-      {clicked && (
-        <ButtonsSizeConatiner onMouseLeave={handleMouseLeave} tabIndex={0}>
-          {renderSizes()}
-        </ButtonsSizeConatiner>
-      )}
+      <button onFocus={handleFocus} onBlur={handleFocus}>
+        {!clicked && <span>{title}</span>}
+        {clicked && (
+          <SizesContainer>Avaiable sizes:{renderSizes()}</SizesContainer>
+        )}
+      </button>
     </Container>
   );
 }
