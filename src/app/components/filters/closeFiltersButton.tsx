@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CloseFilterIcon from "./closeFilterIcon";
+import CloseIcon from "./closeIcon";
 
 interface CloseFiltersButtonProps {
   onClick: () => void;
@@ -29,7 +29,7 @@ export default function CloseFiltersButton({
 }: CloseFiltersButtonProps) {
   return (
     <Container onClick={onClick}>
-      <CloseFilterIcon />
+      <CloseIcon />
     </Container>
   );
 }

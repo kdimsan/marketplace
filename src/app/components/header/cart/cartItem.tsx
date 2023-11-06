@@ -7,6 +7,7 @@ import styled from "styled-components";
 import CartItemsCard, { DataProps } from "./cartItemsCard";
 
 const Container = styled.div`
+  overflow-y: auto;
   > div {
     > h1 {
       font-family: inherit;
@@ -73,6 +74,8 @@ export default function CartItem() {
   });
 
   const cartTotalPrice = cartFinalPrice(priceArray);
+
+  console.log("cartTotalPrice", cartTotalPrice);
 
   const dataProps = { data: combinedArray } as DataProps;
 

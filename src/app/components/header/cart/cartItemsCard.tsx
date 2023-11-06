@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CartItemQuantity from "./cartItemQuantity";
 
 export interface DataProps {
   data: {
@@ -15,9 +16,11 @@ export interface DataProps {
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 250px);
+  grid-template-columns: repeat(1, 300px);
 
   gap: 15px;
+
+  position: relative;
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(2, 250px);
@@ -25,10 +28,10 @@ const Container = styled.div`
 `;
 const CartProductContent = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 13px;
 
   background: linear-gradient(315deg, #e6e6e6, #ffffff);
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: inset -13px -13px 23px #cbcbcb, inset 13px 13px 23px #ffffff;
 
   padding: 5px 8px;
@@ -36,10 +39,11 @@ const CartProductContent = styled.div`
   > div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
+    padding: 5px 0;
   }
   > img {
-    width: 75px;
+    width: 85px;
     border-radius: 8px;
   }
 
@@ -56,13 +60,14 @@ const CartProductContent = styled.div`
     margin: -5px 0 5px;
   }
   h4 {
-    font-size: 13px;
+    font-size: 14px;
   }
   span {
-    font-size: 12px;
-    margin-bottom: 5px;
+    font-size: 14px;
   }
 `;
+
+//Adicionar o select no quantidade. usar um estado para pegar o atual e, os clicks, alteram o estado.
 
 export default function CartItemsCard({ data }: DataProps) {
   return (
@@ -74,9 +79,13 @@ export default function CartItemsCard({ data }: DataProps) {
               <img src={product.image} alt={"Cart item image"} />
               <div>
                 <h3>{product.name}</h3>
-                <h4>Selected size: {product.size}</h4>
-                <span>Quantity: {product.quantity}</span>
-                <h4>Total Price:</h4>
+                <h4>Size: {product.size}</h4>
+                <CartItemQuantity
+                  id={product.id}
+                  size={product.size}
+                  itemQuantity={product.quantity}
+                />
+
                 <span>{product.finalPrice}</span>
               </div>
             </CartProductContent>

@@ -3,6 +3,7 @@
   --light-blue-2: #64a4e9;
 
   --light-gray: #333333;
+  --light-gray-2: #ccc;
 
   --text-dark-2: #41414d;
 
@@ -32,6 +33,6 @@ ul {
 button {
   cursor: pointer;
 
-  background-color: none;
+  background: none;
   border: none;
 }

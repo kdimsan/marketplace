@@ -4,6 +4,10 @@ export function formatPrice(value: number) {
   const formattedValue = valueFloat.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2,
+    useGrouping: true,
+    currencyDisplay: "symbol",
   });
   return formattedValue;
 }

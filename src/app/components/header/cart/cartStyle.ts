@@ -1,27 +1,29 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
+  > div {
+    display: flex;
+    align-items: center;
 
-  position: relative;
+    position: relative;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  svg {
-    width: 24px;
-    height: 24px;
-  }
+    > svg {
+      width: 24px;
+      height: 24px;
+    }
 
-  .open {
-    top: 80px;
-    right: 15px;
-  }
-
-  @media (min-width: 1024px) {
     .open {
-      top: 82px;
-      right: 90px;
+      top: 80px;
+      right: 15px;
+    }
+
+    @media (min-width: 1024px) {
+      .open {
+        top: 82px;
+        right: 90px;
+      }
     }
   }
 `;
@@ -44,4 +46,16 @@ export const CartCounter = styled.div`
     justify-content: center;
     color: #fff;
   }
+`;
+
+export const Overlay = styled.div`
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  display: block !important;
 `;
